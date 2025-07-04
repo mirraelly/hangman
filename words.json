@@ -1,0 +1,15 @@
+{
+  "words": [
+    { "word": "banana", "hint": "Fruta amarela rica em potássio" },
+    {
+      "word": "computador",
+      "hint": "Dispositivo eletrônico para processamento de dados"
+    },
+    { "word": "javascript", "hint": "Linguagem de programação usada na web" },
+    {
+      "word": "forca",
+      "hint": "Nome do próprio jogo que você está jogando agora"
+    },
+    { "word": "internet", "hint": "Rede mundial de computadores" }
+  ]
+}
