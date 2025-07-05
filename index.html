@@ -3,24 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Jogo da Forca</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="game-container">
-      <h1>Jogo da Forca</h1>
+      <header class="game-header">
+        <h1>Jogo da Forca</h1>
+        <!-- <div
+          id="soundToggleButton"
+          aria-label="Ativar/Desativar som"
+          class="sound-toggle-button"
+        >
+          <i id="soundIcon" class="fas fa-volume-up"></i>
+        </div> -->
+      </header>
 
       <div class="text-sm text-gray-600 mt-2">
         <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
       </div>
 
-      <div class="info" id="tries-container">
-        <p class="text-tentativa">
-          Tentativas restantes: <span id="tries-left">6</span>
-        </p>
-      </div>
+      <div>
+        <div class="info" id="tries-container">
+          <p class="text-tentativa">
+            Tentativas restantes: <span id="tries-left">6</span>
+          </p>
+          <div class="container-count">
+            <p>Erros: <span id="defeats-count">0</span></p>
+            <p>Acertos: <span id="hits-count">0</span></p>
+          </div>
+        </div>
 
-      <div id="message" class="message"></div>
+        <div id="message" class="message"></div>
+      </div>
 
       <canvas
         id="hangman-canvas"
@@ -32,7 +51,9 @@
       <div id="word" class="word"></div>
       <div id="keyboard" class="keyboard"></div>
 
-      <button id="restartButton">🔁 Reiniciar</button>
+      <button id="restartButton">
+        <i class="fas fa-redo-alt"></i> Reiniciar
+      </button>
     </div>
 
     <script src="script.js"></script>

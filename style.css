@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   font-family: "Segoe UI", sans-serif;
   background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
@@ -16,8 +23,20 @@ body {
   width: 100%;
   padding: 1rem;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
 }
 
 h1 {
@@ -27,21 +46,36 @@ h1 {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.sound-toggle-button {
+  position: absolute;
+  right: 0;
+  top: 26%;
+  transform: translateY(-50% -50%);
+  color: #6c757d;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
 .text-tentativa {
   margin: 0;
+}
+
+.container-count {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .word {
   font-size: 2rem;
   letter-spacing: 0.3rem;
-  margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
 }
 
 .info {
-  margin-bottom: 1.5rem;
   font-size: 1rem;
 }
 
@@ -79,7 +113,6 @@ button:hover {
 }
 
 .hangman-canvas {
-  margin: 1rem auto;
   display: block;
   background-color: #fdfdfd;
   border: 2px solid #e2e8f0;
@@ -103,7 +136,6 @@ button:hover {
   justify-content: center;
   gap: 0.4rem;
   max-width: 320px;
-  margin: 1.5rem auto 0;
   padding: 0.5rem;
   background-color: #f9fafb;
   border-radius: 12px;

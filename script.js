@@ -6,6 +6,8 @@ let wrongLetters = [];
 let maxTries = 6;
 let remainingTries = maxTries;
 let isGameOver = false;
+let hitCount = 0;
+let defCount = 0;
 
 const wordEl = document.getElementById("word");
 const triesEl = document.getElementById("tries-left");
@@ -15,6 +17,8 @@ const restartBtn = document.getElementById("restartButton");
 const canvas = document.getElementById("hangman-canvas");
 const ctx = canvas.getContext("2d");
 const triesContainer = document.getElementById("tries-container");
+const hitsEl = document.getElementById("hits-count");
+const defeats = document.getElementById("defeats-count");
 
 function startGame() {
     if (words.length === 0) {
@@ -58,10 +62,14 @@ function checkGameStatus() {
         messageEl.textContent = "🎉 Você venceu!";
         isGameOver = true;
         triesContainer.style.display = "none";
+        hitCount++;
+        hitsEl.textContent = hitCount;
     } else if (remainingTries <= 0) {
         messageEl.textContent = `💀 Você perdeu! A palavra era: ${selectedWord}`;
         isGameOver = true;
         triesContainer.style.display = "none";
+        defCount++;
+        defeats.textContent = defCount;
     }
 }
 
