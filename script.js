@@ -101,7 +101,7 @@ fetch("words.json")
 
 function createKeyboard() {
     const keyboardContainer = document.getElementById("keyboard");
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const alphabet = "abcdefghijklmnopqrstuvwxyzç";
 
     keyboardContainer.innerHTML = "";
 
