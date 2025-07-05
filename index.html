@@ -10,18 +10,25 @@
     <div class="game-container">
       <h1>🎯 Jogo da Forca</h1>
 
-      <div id="word" class="word"></div>
+      <p class="text-sm text-gray-600 mt-2">
+        <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
+      </p>
 
-      <div class="info">
-        <p>Erros: <span id="wrong-letters"></span></p>
+      <div class="info" id="tries-container">
         <p>Tentativas restantes: <span id="tries-left">6</span></p>
       </div>
 
       <div id="message" class="message"></div>
 
-      <p class="text-sm text-gray-600 mt-2">
-        <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
-      </p>
+      <canvas
+        id="hangman-canvas"
+        width="200"
+        height="250"
+        class="hangman-canvas"
+      ></canvas>
+
+      <div id="word" class="word"></div>
+      <div id="keyboard" class="keyboard"></div>
 
       <button id="restartButton">🔁 Reiniciar</button>
     </div>

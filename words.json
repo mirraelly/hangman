@@ -1,15 +1,104 @@
 {
   "words": [
-    { "word": "banana", "hint": "Fruta amarela rica em potássio" },
     {
-      "word": "computador",
-      "hint": "Dispositivo eletrônico para processamento de dados"
+      "word": "abacaxi",
+      "hint": "Fruta",
+      "difficulty": "fácil"
     },
-    { "word": "javascript", "hint": "Linguagem de programação usada na web" },
     {
-      "word": "forca",
-      "hint": "Nome do próprio jogo que você está jogando agora"
+      "word": "elefante",
+      "hint": "Animal",
+      "difficulty": "médio"
     },
-    { "word": "internet", "hint": "Rede mundial de computadores" }
+    {
+      "word": "violino",
+      "hint": "Instrumento musical",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "bicicleta",
+      "hint": "Meio de transporte",
+      "difficulty": "médio"
+    },
+    {
+      "word": "chocolate",
+      "hint": "Doce",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "paralelepipedo",
+      "hint": "Figura geométrica",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "cachorro",
+      "hint": "Animal",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "telescopio",
+      "hint": "Astronomia",
+      "difficulty": "médio"
+    },
+    {
+      "word": "xadrez",
+      "hint": "Jogo",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "praia",
+      "hint": "Férias",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "dinossauro",
+      "hint": "Animal",
+      "difficulty": "médio"
+    },
+    {
+      "word": "otorrinolaringologista",
+      "hint": "Médico",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "livro",
+      "hint": "Objeto",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "girassol",
+      "hint": "Flor",
+      "difficulty": "médio"
+    },
+    {
+      "word": "ornitorrinco",
+      "hint": "Mamífero",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "casa",
+      "hint": "Lugar",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "montanha",
+      "hint": "Geografia",
+      "difficulty": "médio"
+    },
+    {
+      "word": "pneumoultramicroscopicossilicovulcanoconiose",
+      "hint": "Doença pulmonar",
+      "difficulty": "difícil"
+    },
+    {
+      "word": "sol",
+      "hint": "Estrela",
+      "difficulty": "fácil"
+    },
+    {
+      "word": "avião",
+      "hint": "Transporte",
+      "difficulty": "médio"
+    }
   ]
 }
