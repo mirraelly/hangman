@@ -1,101 +1,121 @@
 {
   "words": [
     {
+      "id": 1,
       "word": "abacaxi",
       "hint": "Fruta",
       "difficulty": "fácil"
     },
     {
+      "id": 2,
       "word": "elefante",
       "hint": "Animal",
       "difficulty": "médio"
     },
     {
+      "id": 3,
       "word": "violino",
       "hint": "Instrumento musical",
       "difficulty": "difícil"
     },
     {
+      "id": 4,
       "word": "bicicleta",
       "hint": "Meio de transporte",
       "difficulty": "médio"
     },
     {
+      "id": 5,
       "word": "chocolate",
       "hint": "Doce",
       "difficulty": "fácil"
     },
     {
+      "id": 6,
       "word": "paralelepipedo",
       "hint": "Figura geométrica",
       "difficulty": "difícil"
     },
     {
+      "id": 7,
       "word": "cachorro",
       "hint": "Animal",
       "difficulty": "fácil"
     },
     {
+      "id": 8,
       "word": "telescopio",
       "hint": "Astronomia",
       "difficulty": "médio"
     },
     {
+      "id": 9,
       "word": "xadrez",
       "hint": "Jogo",
       "difficulty": "difícil"
     },
     {
+      "id": 10,
       "word": "praia",
       "hint": "Férias",
       "difficulty": "fácil"
     },
     {
+      "id": 11,
       "word": "dinossauro",
       "hint": "Animal",
       "difficulty": "médio"
     },
     {
+      "id": 12,
       "word": "otorrinolaringologista",
       "hint": "Médico",
       "difficulty": "difícil"
     },
     {
+      "id": 13,
       "word": "livro",
       "hint": "Objeto",
       "difficulty": "fácil"
     },
     {
+      "id": 14,
       "word": "girassol",
       "hint": "Flor",
       "difficulty": "médio"
     },
     {
+      "id": 15,
       "word": "ornitorrinco",
       "hint": "Mamífero",
       "difficulty": "difícil"
     },
     {
+      "id": 16,
       "word": "casa",
       "hint": "Lugar",
       "difficulty": "fácil"
     },
     {
+      "id": 17,
       "word": "montanha",
       "hint": "Geografia",
       "difficulty": "médio"
     },
     {
-      "word": "pneumoultramicroscopicossilicovulcanoconiose",
-      "hint": "Doença pulmonar",
+      "id": 18,
+      "word": "onça",
+      "hint": "Animal",
       "difficulty": "difícil"
     },
     {
+      "id": 19,
       "word": "sol",
       "hint": "Estrela",
       "difficulty": "fácil"
     },
     {
+      "id": 20,
       "word": "avião",
       "hint": "Transporte",
       "difficulty": "médio"

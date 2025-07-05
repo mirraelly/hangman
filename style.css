@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 7px;
 }
 
 .game-header {
@@ -57,14 +57,27 @@ h1 {
   transition: color 0.3s ease;
 }
 
+.container-dica {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .text-tentativa {
   margin: 0;
 }
 
 .container-count {
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 2px 0;
+  margin: 10px 0 0 0;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .word {

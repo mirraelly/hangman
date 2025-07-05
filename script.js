@@ -1,4 +1,5 @@
 let words = [];
+let wordQueue = [];
 let selectedWord = "";
 let selectedHint = "";
 let correctLetters = [];
@@ -8,6 +9,7 @@ let remainingTries = maxTries;
 let isGameOver = false;
 let hitCount = 0;
 let defCount = 0;
+let normalizedSelectedWord = "";
 
 const wordEl = document.getElementById("word");
 const triesEl = document.getElementById("tries-left");
@@ -20,15 +22,28 @@ const triesContainer = document.getElementById("tries-container");
 const hitsEl = document.getElementById("hits-count");
 const defeats = document.getElementById("defeats-count");
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 function startGame() {
-    if (words.length === 0) {
-        console.error("Nenhuma palavra foi carregada.");
-        return;
+    if (wordQueue.length === 0) {
+        wordQueue = [...words];
+        shuffleArray(wordQueue);
     }
 
-    const randomEntry = words[Math.floor(Math.random() * words.length)];
-    selectedWord = randomEntry.word.toLowerCase();
-    selectedHint = randomEntry.hint;
+    const currentEntry = wordQueue.shift();
+    selectedWord = currentEntry.word.toLowerCase();
+    selectedHint = currentEntry.hint;
+
+    normalizedSelectedWord = selectedWord
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/ç/g, "c");
+
     correctLetters = [];
     wrongLetters = [];
     remainingTries = maxTries;
@@ -44,11 +59,13 @@ function startGame() {
 function updateDisplay() {
     wordEl.innerHTML = selectedWord
         .split("")
-        .map(letter => (correctLetters.includes(letter) ? letter : "_"))
+        .map((letter, index) => {
+            const normalized = letter.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
+            return correctLetters.includes(normalized) ? letter : "_";
+        })
         .join(" ");
 
     triesEl.textContent = remainingTries;
-
     checkGameStatus();
     drawHangman(maxTries - remainingTries);
 }
@@ -75,16 +92,17 @@ function checkGameStatus() {
 
 
 function handleKeyPress(e) {
-    const letter = e.key.toLowerCase();
+    const rawLetter = e.key.toLowerCase();
+    const letter = rawLetter.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
 
     if (!/^[a-z]$/.test(letter) || isGameOver) return;
 
     if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
-        messageEl.textContent = `⚠️ Você já tentou a letra "${letter.toUpperCase()}"`;
+        messageEl.textContent = `⚠️ Você já tentou a letra "${rawLetter.toUpperCase()}"`;
         return;
     }
 
-    if (selectedWord.includes(letter)) {
+    if (normalizedSelectedWord.includes(letter)) {
         correctLetters.push(letter);
     } else {
         wrongLetters.push(letter);
@@ -101,6 +119,8 @@ fetch("words.json")
     .then(response => response.json())
     .then(data => {
         words = data.words;
+        wordQueue = [...words];
+        shuffleArray(wordQueue);
         startGame();
     })
     .catch(error => {
@@ -109,7 +129,7 @@ fetch("words.json")
 
 function createKeyboard() {
     const keyboardContainer = document.getElementById("keyboard");
-    const alphabet = "abcdefghijklmnopqrstuvwxyzç";
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
     keyboardContainer.innerHTML = "";
 
@@ -127,15 +147,17 @@ function createKeyboard() {
     });
 }
 
-function simulateKeyPress(letter) {
-    if (!/^[a-z]$/.test(letter) || isGameOver) return;
+function simulateKeyPress(rawLetter) {
+    if (!/^[a-z]$/.test(rawLetter) || isGameOver) return;
+
+    const letter = rawLetter.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ç/g, "c");
 
     if (correctLetters.includes(letter) || wrongLetters.includes(letter)) {
-        messageEl.textContent = `⚠️ Você já tentou a letra "${letter.toUpperCase()}"`;
+        messageEl.textContent = `⚠️ Você já tentou a letra "${rawLetter.toUpperCase()}"`;
         return;
     }
 
-    if (selectedWord.includes(letter)) {
+    if (normalizedSelectedWord.includes(letter)) {
         correctLetters.push(letter);
     } else {
         wrongLetters.push(letter);

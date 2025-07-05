@@ -23,24 +23,22 @@
         </div> -->
       </header>
 
-      <div class="text-sm text-gray-600 mt-2">
-        <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
+      <div class="container-count">
+        <p><strong>Vitórias: </strong><span id="hits-count">0</span></p>
+        <p><strong>Derrotas: </strong><span id="defeats-count">0</span></p>
       </div>
 
-      <div>
+      <div class="container-dica">
+        <div class="text-sm text-gray-600 mt-2">
+          <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
+        </div>
         <div class="info" id="tries-container">
           <p class="text-tentativa">
-            Tentativas restantes: <span id="tries-left">6</span>
+            Tentativas: <span id="tries-left">6</span>
           </p>
-          <div class="container-count">
-            <p>Erros: <span id="defeats-count">0</span></p>
-            <p>Acertos: <span id="hits-count">0</span></p>
-          </div>
         </div>
-
-        <div id="message" class="message"></div>
       </div>
-
+      <div id="message" class="message"></div>
       <canvas
         id="hangman-canvas"
         width="200"
