@@ -7,37 +7,44 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="./assets/styles/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <title>Jogo da Forca</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="game-container">
       <header class="game-header">
         <h1>Jogo da Forca</h1>
-        <!-- <div
+        <div
           id="soundToggleButton"
           aria-label="Ativar/Desativar som"
           class="sound-toggle-button"
         >
           <i id="soundIcon" class="fas fa-volume-up"></i>
-        </div> -->
+        </div>
       </header>
+
+      <div class="game-message">
+        <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
+      </div>
+
+      <div
+        id="result-message"
+        class="game-message-result"
+        style="display: none"
+      ></div>
 
       <div class="container-count">
         <p><strong>Vitórias: </strong><span id="hits-count">0</span></p>
         <p><strong>Derrotas: </strong><span id="defeats-count">0</span></p>
+        <p class="text-tentativa">Tentativas: <span id="tries-left">6</span></p>
       </div>
 
-      <div class="container-dica">
-        <div class="text-sm text-gray-600 mt-2">
-          <strong>Dica:</strong> <span id="hint-text">Carregando...</span>
-        </div>
-        <div class="info" id="tries-container">
-          <p class="text-tentativa">
-            Tentativas: <span id="tries-left">6</span>
-          </p>
-        </div>
-      </div>
       <div id="message" class="message"></div>
       <canvas
         id="hangman-canvas"
@@ -49,12 +56,17 @@
       <div id="word" class="word"></div>
       <div id="keyboard" class="keyboard"></div>
 
-      <button id="restartButton">
-        <i class="fas fa-redo-alt"></i> Reiniciar
-      </button>
+      <div class="game-controls">
+        <button id="restartButton" class="button button-primary">
+          <i class="fas fa-undo"></i> Jogar de novo
+        </button>
+        <button id="resetScoreButton" class="button button-secondary">
+          <i class="fas fa-redo-alt"></i> Reiniciar placar
+        </button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./assets/scripts/script.js" defer></script>
 
     <footer class="copyright">
       <a href="https://github.com/mirraelly"> © 2025 Mirraely Moura </a>

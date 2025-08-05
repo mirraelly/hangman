@@ -7,9 +7,11 @@ let wrongLetters = [];
 let maxTries = 6;
 let remainingTries = maxTries;
 let isGameOver = false;
-let hitCount = 0;
-let defCount = 0;
 let normalizedSelectedWord = "";
+let soundOn = true;
+
+let hitCount = parseInt(localStorage.getItem('hitCount')) || 0;
+let defCount = parseInt(localStorage.getItem('defCount')) || 0;
 
 const wordEl = document.getElementById("word");
 const triesEl = document.getElementById("tries-left");
@@ -18,9 +20,23 @@ const hintEl = document.getElementById("hint-text");
 const restartBtn = document.getElementById("restartButton");
 const canvas = document.getElementById("hangman-canvas");
 const ctx = canvas.getContext("2d");
-const triesContainer = document.getElementById("tries-container");
+const triesContainer = document.querySelector(".text-tentativa");
 const hitsEl = document.getElementById("hits-count");
 const defeats = document.getElementById("defeats-count");
+const soundToggleButton = document.getElementById('soundToggleButton');
+const resetScoreButton = document.getElementById("resetScoreButton");
+const soundIcon = document.getElementById('soundIcon');
+const resultMessageEl = document.getElementById("result-message");
+
+const victorySound = new Howl({
+    src: ['./assets/sounds/victory-sound.wav'],
+    volume: 0.8
+});
+
+const drawSound = new Howl({
+    src: ['./assets/sounds/draw.mp3'],
+    volume: 0.6
+});
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -30,6 +46,9 @@ function shuffleArray(array) {
 }
 
 function startGame() {
+    victorySound.stop();
+    drawSound.stop();
+
     if (wordQueue.length === 0) {
         wordQueue = [...words];
         shuffleArray(wordQueue);
@@ -48,8 +67,12 @@ function startGame() {
     wrongLetters = [];
     remainingTries = maxTries;
     isGameOver = false;
-
+    hitsEl.textContent = hitCount;
+    defeats.textContent = defCount;
+    hintEl.parentElement.style.display = 'block';
     hintEl.textContent = selectedHint;
+    resultMessageEl.style.display = 'none';
+
     messageEl.textContent = "";
     updateDisplay();
     createKeyboard();
@@ -71,25 +94,36 @@ function updateDisplay() {
 }
 
 function checkGameStatus() {
-    const wordComplete = selectedWord
+    const wordComplete = normalizedSelectedWord
         .split("")
         .every(letter => correctLetters.includes(letter));
 
     if (wordComplete) {
-        messageEl.textContent = "🎉 Você venceu!";
+        if (soundOn) victorySound.play();
+        hintEl.parentElement.style.display = 'none';
+        resultMessageEl.innerHTML = `Você venceu! <i class="fas fa-smile" aria-hidden="true" style="color: #6b8bc9; font-size: 1.2em;"></i>`;
+        resultMessageEl.style.display = 'block';
+
         isGameOver = true;
         triesContainer.style.display = "none";
         hitCount++;
         hitsEl.textContent = hitCount;
+        localStorage.setItem('hitCount', hitCount);
+        firework();
     } else if (remainingTries <= 0) {
-        messageEl.textContent = `💀 Você perdeu! A palavra era: ${selectedWord}`;
+        if (soundOn) drawSound.play();
+        hintEl.parentElement.style.display = 'none';
+        resultMessageEl.innerHTML = `Você perdeu! <i class="fas fa-frown" aria-hidden="true" style="color: #e15b73; font-size: 1.2em;"></i>  <br/> A palavra era: ${selectedWord}`;
+        resultMessageEl.style.display = 'block';
+
         isGameOver = true;
         triesContainer.style.display = "none";
         defCount++;
         defeats.textContent = defCount;
+        localStorage.setItem('defCount', defCount);
+        drawDrawConfetti();
     }
 }
-
 
 function handleKeyPress(e) {
     const rawLetter = e.key.toLowerCase();
@@ -115,7 +149,7 @@ function handleKeyPress(e) {
 document.addEventListener("keydown", handleKeyPress);
 restartBtn.addEventListener("click", startGame);
 
-fetch("words.json")
+fetch("./assets/data/words.json")
     .then(response => response.json())
     .then(data => {
         words = data.words;
@@ -235,4 +269,67 @@ function drawHangman(stage) {
         ctx.moveTo(130, 140); ctx.lineTo(150, 180);
         ctx.stroke();
     }
+}
+
+
+soundToggleButton.addEventListener('click', () => {
+    soundOn = !soundOn;
+    if (soundOn) {
+        soundIcon.classList.remove('fa-volume-mute');
+        soundIcon.classList.add('fa-volume-up');
+    } else {
+        soundIcon.classList.remove('fa-volume-up');
+        soundIcon.classList.add('fa-volume-mute');
+        victorySound.stop();
+        drawSound.stop();
+    }
+});
+
+resetScoreButton.addEventListener('click', () => {
+    hitCount = 0;
+    defCount = 0;
+    localStorage.setItem('hitCount', 0);
+    localStorage.setItem('defCount', 0);
+    startGame();
+});
+
+function firework() {
+    const duration = 2000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+    const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        const particleCount = 50 * (timeLeft / duration);
+
+        confetti(Object.assign({}, defaults, {
+            particleCount,
+            origin: { x: Math.random(), y: Math.random() * 0.5 }
+        }));
+    }, 250);
+}
+
+function drawDrawConfetti() {
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 10, spread: 60, ticks: 120, zIndex: 1000, colors: ['#a0aec0', '#cbd5e1', '#f1f5f9'] };
+
+    const interval = setInterval(function () {
+        const timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            clearInterval(interval);
+            return;
+        }
+
+        confetti(Object.assign({}, defaults, {
+            particleCount: 5,
+            origin: { x: Math.random(), y: 0 }
+        }));
+    }, 200);
 }
