@@ -149,7 +149,7 @@ function handleKeyPress(e) {
 document.addEventListener("keydown", handleKeyPress);
 restartBtn.addEventListener("click", startGame);
 
-fetch("./assets/data/words.json")
+fetch("./data/words.json")
     .then(response => response.json())
     .then(data => {
         words = data.words;
