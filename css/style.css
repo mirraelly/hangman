@@ -254,7 +254,39 @@ footer.copyright a {
   text-decoration: none;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    padding: 10px;
+    min-height: max-content;
+  }
+
+  .game-container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .sound-toggle-button {
+    font-size: 1rem;
+  }
+
+  .game-message {
+    font-size: 1rem;
+  }
+
+  .score-player,
+  .score-draws {
+    font-size: 0.8rem;
+  }
+
   .keyboard {
     max-width: 100%;
     grid-template-columns: repeat(auto-fit, minmax(28px, 1fr));
@@ -265,5 +297,19 @@ footer.copyright a {
   .key {
     font-size: 0.85rem;
     padding: 0.5rem;
+  }
+
+  .button {
+    width: 100%;
+    margin-left: 0 !important;
+    font-size: 0.8rem;
+  }
+
+  .game-controls {
+    flex-direction: column;
+  }
+
+  footer.copyright {
+    margin-top: 0;
   }
 }

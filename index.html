@@ -7,7 +7,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link
@@ -40,9 +40,15 @@
       ></div>
 
       <div class="container-count">
-        <p><strong>Vitórias: </strong><span id="hits-count">0</span></p>
-        <p><strong>Derrotas: </strong><span id="defeats-count">0</span></p>
-        <p class="text-tentativa">Tentativas: <span id="tries-left">6</span></p>
+        <p class="score-player">
+          <strong>Vitórias: </strong><span id="hits-count">0</span>
+        </p>
+        <p class="score-player">
+          <strong>Derrotas: </strong><span id="defeats-count">0</span>
+        </p>
+        <p class="text-tentativa score-player">
+          Tentativas: <span id="tries-left">6</span>
+        </p>
       </div>
 
       <div id="message" class="message"></div>
@@ -66,7 +72,7 @@
       </div>
     </div>
 
-    <script src="./scripts/script.js" defer></script>
+    <script src="./js/script.js" defer></script>
 
     <footer class="copyright">
       <a href="https://github.com/mirraelly"> © 2025 Mirraely Moura </a>
